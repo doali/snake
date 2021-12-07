@@ -3,23 +3,24 @@
 
 int main()
 {
-    sf::RenderWindow window(sf::VideoMode(1000, 1000), "SFML works!");
-    sf::CircleShape shape(10.f);
-    shape.setFillColor(sf::Color::Green);
+    Board board(Coordinates{100, 100}, 1000, 1000);    
 
-    while (window.isOpen())
-    {
-        sf::Event event;
-        while (window.pollEvent(event))
-        {
-            if (event.type == sf::Event::Closed)
-                window.close();
-        }
+    // sf::RenderWindow window(sf::VideoMode(board.width(), board.height()), "Snake");
+    // window.setVerticalSyncEnabled(true);
 
-        window.clear();
-        window.draw(shape);
-        window.display();
-    }
+    // while (window.isOpen())
+    // {
+    //     sf::Event event;
+    //     while (window.pollEvent(event))
+    //     {
+    //         if (event.type == sf::Event::Closed)
+    //             window.close();
+    //     }
+
+    //     window.clear();
+    //     // window.draw(shape);
+    //     window.display();
+    // }
 
     return 0;
 }

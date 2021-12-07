@@ -1,6 +1,6 @@
 #include "../headers/Board.hpp"
 
-Element::Element(Coordinates const coordinates) : _coordinates(coordinates)
+Element::Element(Coordinates const &coordinates) : _coordinates(coordinates)
 {
 }
 
@@ -8,11 +8,10 @@ Element::~Element()
 {
 }
 
-Board::Board(const unsigned int width, const unsigned int height) : _width(width),
-                                                                    _height(height)
-{
-}
+Board::Board(Coordinates const &coordinates, unsigned int const &width /* = 1000 */, unsigned int const &height /* = 1000 */) : _coordinates(coordinates),
+                                                                                                                             _width(width),
+                                                                                                                             _height(height)
 
-Board::~Board()
 {
+    _snake.setBoard(this);
 }

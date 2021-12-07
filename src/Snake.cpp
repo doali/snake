@@ -1,30 +1,28 @@
 #include "../headers/Snake.hpp"
+#include "../headers/Board.hpp"
 
-Snake::Snake(unsigned int size = 3) : _snakeElement(std::vector<SnakeElement>{size})
-{
-}
-
-Snake::~Snake()
+Snake::Snake(Board *board, unsigned int const &size) : _board(board),
+                                                _snakeElement(std::vector<SnakeElement>{size})
 {
 }
 
 void Snake::move()
 {
-    auto keepDirection = [](Coordinates &coord, Direction &direction)
+    auto keepDirection = [](Coordinates coord, Direction direction)
     {
         switch (direction)
         {
         case Direction::UP:
-            --coord.y;
+            coord.setY(coord.y() - 1);
             break;
         case Direction::RIGHT:
-            ++coord.x;
+            coord.setX(coord.x() + 1);
             break;
         case Direction::DOWN:
-            ++coord.y;
+            coord.setY(coord.y() + 1);
             break;
         case Direction::LEFT:
-            --coord.x;
+            coord.setY(coord.x() - 1);
             break;
         case Direction::NONE:
             break;
@@ -33,6 +31,6 @@ void Snake::move()
 
     for (auto &snakeElmnt : _snakeElement)
     {
-        keepDirection(snakeElmnt.coordinates, snakeElmnt.direction);
+        keepDirection(snakeElmnt.coordinates(), snakeElmnt.direction());
     }
 }
