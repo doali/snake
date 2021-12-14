@@ -1,1 +1,8 @@
-int main() { return 0; }
+#include <iostream>
+
+int main()
+{
+    std::cout << "github.com" << std::endl;
+
+    return 0;
+}
