@@ -50,6 +50,10 @@ mkdir build && cd build && cmake .. && make
 
 ![Build_Run_CMake](./img/vscode_cmake.png)
 
+## Lib
+
+- [SFML](https://www.sfml-dev.org/index-fr.php)
+
 ## Biblio
 
 - [code (vscode)](https://code.visualstudio.com/docs/cpp/CMake-linux)
