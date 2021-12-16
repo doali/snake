@@ -83,6 +83,8 @@ doali doali:~
 > 
 ```
 
+> (!) [eliasdaler CMake !!](https://eliasdaler.github.io/using-cmake/)
+
 ## From `code` (VSCode)
 
 ![Build_Run_CMake](./img/vscode_cmake.png)
