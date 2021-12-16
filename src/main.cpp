@@ -1,10 +1,15 @@
+#include "Snake.hpp"
+
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 int main()
 {
     sf::RenderWindow window(sf::VideoMode(200, 200), "SFML works!");
     sf::CircleShape shape(100.f);
     shape.setFillColor(sf::Color::Green);
+
+    Snake().doSomething(); // vérification compilation, exécution...
 
     while (window.isOpen())
     {
