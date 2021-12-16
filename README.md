@@ -58,6 +58,10 @@ make
 make install
 ```
 
+## Doc
+
+`doxygen -g Doxyfile.in`
+
 ## Dependencies
 
 ```bash
