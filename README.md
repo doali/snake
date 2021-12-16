@@ -99,3 +99,4 @@ doali doali:~
 - [cmake tutorial](http://sirien.metz.supelec.fr/depot/SIR/TutorielCMake/index.html)
 - [cmake org](https://cmake.org/cmake/help/latest/guide/tutorial/A%20Basic%20Starting%20Point.html#)
 - [cmake tutoriel](http://sirien.metz.supelec.fr/depot/SIR/TutorielCMake/index.html)
+- [cmake to_check](https://en.sfml-dev.org/forums/index.php?topic=27603.0)
