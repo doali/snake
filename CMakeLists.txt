@@ -1,11 +1,5 @@
-cmake_minimum_required(VERSION 3.0.0)
-project(Snake VERSION 0.1.0)
+cmake_minimum_required(VERSION 3.11.0)
+project(snake VERSION 0.1.0)
 
-include(CTest)
-enable_testing()
-
-add_executable(Snake main.cpp)
-
-set(CPACK_PROJECT_NAME ${PROJECT_NAME})
-set(CPACK_PROJECT_VERSION ${PROJECT_VERSION})
-include(CPack)
+add_subdirectory(src)
+#add_subdirectory(doc)
