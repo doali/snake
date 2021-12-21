@@ -3,6 +3,7 @@
 
 #include <list>
 #include <stdint.h>
+#include <SFML/Graphics.hpp>
 
 namespace snake
 {
@@ -21,8 +22,15 @@ namespace snake
         float _x{0};
         float _y{0};
     };
-    struct Cell
+
+    struct GUICell
     {
+        sf::CircleShape _shape{10.f};        
+    };
+
+    struct Cell : public GUICell
+    {
+        Cell() : GUICell() {}
         /**
          * @brief coordoonées de la cellule
          *
@@ -52,11 +60,11 @@ namespace snake
          */
         uint8_t _cellPrint{0};
     };
-    
+
     struct Snake
     {
         Snake() = default;
-        explicit Snake(size_t const &size) : _size(size) {};
+        explicit Snake(size_t const &size) : _size(size){};
 
         /**
          * @brief ensemble de cellules
@@ -74,6 +82,8 @@ namespace snake
 
         void move(const Direction &);
         size_t _size{4};
+
+        void init();
     };
 } // namespace snake
 
