@@ -43,7 +43,7 @@ mkdir build && cd build && cmake .. && make
 ### Run
 
 ```bash
-./Snake
+./snake
 ```
 
 ### Install
