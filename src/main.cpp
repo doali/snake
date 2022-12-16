@@ -35,6 +35,9 @@ int main()
     l_timer.add(update_cirle, window);
     l_timer.start();
 
+    auto l_start{std::chrono::high_resolution_clock::now()};    
+    snake::Direction currDirection{snake::Direction::RIGHT};
+
     while (window.isOpen())
     {
         sf::Event event;
@@ -47,16 +50,20 @@ int main()
                 switch (event.key.code)
                 {
                 case sf::Keyboard::Right:
-                    snake.move(snake::Direction::RIGHT);
+                    // snake.move(snake::Direction::RIGHT);
+                    currDirection = snake::Direction::RIGHT;                    
                     break;
                 case sf::Keyboard::Down:
-                    snake.move(snake::Direction::DOWN);
+                    // snake.move(snake::Direction::DOWN);
+                    currDirection = snake::Direction::DOWN;
                     break;
                 case sf::Keyboard::Left:
-                    snake.move(snake::Direction::LEFT);
+                    // snake.move(snake::Direction::LEFT);
+                    currDirection = snake::Direction::LEFT;
                     break;
                 case sf::Keyboard::Up:
-                    snake.move(snake::Direction::UP);
+                    // snake.move(snake::Direction::UP);
+                    currDirection = snake::Direction::UP;
                     break;
                 default:
                     break;
@@ -69,6 +76,17 @@ int main()
         for(auto &cell : snake._snakeCells)
         {
             window.draw(cell._shape);
+        }
+
+        {
+            auto l_now{std::chrono::high_resolution_clock::now()};
+            auto elapsed{std::chrono::duration_cast<std::chrono::milliseconds>(l_now - l_start)};
+
+            if (elapsed.count() >= 80)
+            {
+                snake.move(currDirection);
+                l_start = l_now;
+            }
         }
             
         l_timer.run();

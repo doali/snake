@@ -40,7 +40,7 @@ namespace timer
             {
                 _callback(_window);
                 _start = l_now;
-                info_time_sec();
+                // info_time_sec();
             }
         }
 
