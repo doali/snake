@@ -1,9 +1,10 @@
 #ifndef _SNAKE_HPP
 #define _SNAKE_HPP
 
-#include <list>
+#include <vector>
 #include <stdint.h>
 #include <SFML/Graphics.hpp>
+#include <iostream>
 
 namespace snake
 {
@@ -21,22 +22,28 @@ namespace snake
         Coordinates(float const x, float const y) : _x(x), _y(y) {}
         float _x{0};
         float _y{0};
+
+        friend std::ostream & operator<<(std::ostream &p_os, Coordinates const &p_coord);
     };
 
     struct GUICell
     {
-        sf::CircleShape _shape{10.f};        
+        static constexpr float RADIUS = 10.f;
+        sf::CircleShape _shape{RADIUS};
     };
 
-    struct Cell : public GUICell
+    struct Cell
     {
-        Cell() : GUICell() {}
+        Cell() = default;
+        void move(const Direction &direction);
         /**
          * @brief coordoonées de la cellule
          *
          */
+        GUICell _guiCell;
         Coordinates _coordinates;
-        size_t _size{4};
+
+        friend std::ostream & operator<<(std::ostream &p_os, Cell const &p_cell);
     };
 
     struct OrientedCell : public Cell
@@ -47,18 +54,9 @@ namespace snake
          *
          */
         Direction _direction{Direction::RIGHT};
+        void move(const Direction &direction);
 
-        static Coordinates projection(const Coordinates &, const Direction &);
-    };
-
-    struct TraficCell : public OrientedCell
-    {
-        /**
-         * @brief compteur de passage d'éléments
-         * sur cette cellule
-         *
-         */
-        uint8_t _cellPrint{0};
+        friend std::ostream & operator<<(std::ostream &p_os, OrientedCell const &p_oCell);
     };
 
     struct Snake
@@ -66,24 +64,18 @@ namespace snake
         Snake() = default;
         explicit Snake(size_t const &size) : _size(size){};
 
+        size_t _size{4};
         /**
          * @brief ensemble de cellules
          * constituant le snake
          */
-        std::list<OrientedCell> _snakeCells;
-
-        /**
-         * @brief ensemble de cellules
-         * mémorisant les changements de directions
-         * du snake
-         *
-         */
-        std::list<TraficCell> _snakeMovements;
+        std::vector<OrientedCell> _snakeCells{_size};
 
         void move(const Direction &);
-        size_t _size{4};
 
         void init();
+
+        friend std::ostream &operator<<(std::ostream &p_os, Snake const &p_snake);
     };
 } // namespace snake
 
