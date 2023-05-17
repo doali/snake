@@ -75,6 +75,7 @@ namespace snake
         for (OrientedCell &cell : _snakeCells)
         {
             cell._guiCell._shape.setPosition(cell._coordinates._x + (currCell * delta_x), cell._coordinates._y);
+            cell._guiCell._shape.setFillColor(sf::Color::Green);
             ++currCell;            
         }
     }
